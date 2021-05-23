@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-und1k^475@#iwhrsbgq8p=n1ywtn99a%2a)5k2hi1ff!!kk4&9
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = [".ap-northeast-2.compute.amazonaws.com"]
+ALLOWED_HOSTS = [".ap-northeast-2.compute.amazonaws.com", "127.0.0.1"]
 
 
 # Application definition
@@ -55,7 +55,9 @@ ROOT_URLCONF = 'mysite.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [
+            os.path.join(BASE_DIR,'main','templates')
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

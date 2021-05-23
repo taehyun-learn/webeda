@@ -1,12 +1,152 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <h1>Change</h1>
-</body>
-</html>
+{% extends 'main/base.html' %}
+{% load static %}
+{% block content %}
+<header class="masthead bg-primary text-white text-center">
+    <div class="container d-flex align-items-center flex-column">
+        <!-- Masthead Avatar Image-->
+        <!-- Masthead Heading-->
+        <img class="img-fluid mb-5" src="{% static 'main/assets/img/housesbanner.png' %}" alt="..." />
+        <h1 class="masthead-heading text-uppercase mb-0">HOUSE PRICE</h1>
+        <!-- Icon Divider-->
+        <div class="divider-custom divider-light">
+            <div class="divider-custom-line"></div>
+            <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+            <div class="divider-custom-line"></div>
+        </div>
+        <div class="row justify-content-center mb-3">
+            <div class="col-md-6 col-lg-5 me-lg-3">
+                <a class="btn btn-xl btn-outline-light" href="https://github.com/taehyun-learn/webeda">
+                    <i class="fab fa-github"></i><br />
+                    Github
+                </a>
+            </div>
+            <div class="col-md-6 col-lg-5 ms-lg-3">
+                <a class="btn btn-xl btn-outline-light" href="https://www.kaggle.com/c/house-prices-advanced-regression-techniques">
+                    <i class="fas fa-download me-2"></i><br />
+                    Kaggle
+                </a>
+            </div>
+        </div>
+        <div class="divider-custom divider-light">
+            <div class="divider-custom-line"></div>
+            <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+            <div class="divider-custom-line"></div>
+        </div>
+        <div class="row">
+            <div class="col-lg-4 ms-auto"><p class="lead">데이터 설명</p></div>
+            <div class="col-lg-4 me-auto"><p class="lead">데이터 설명 2</p></div>
+        </div>
+    </div>
+</header>
+<!-- Portfolio Section-->
+<section class="page-section portfolio" id="eda">
+    <div class="container">
+        <!-- Portfolio Section Heading-->
+        <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">EDA Project</h2>
+        <!-- Icon Divider-->
+        <div class="divider-custom mb-5">
+            <div class="divider-custom-line"></div>
+            <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+            <div class="divider-custom-line"></div>
+        </div>
+        
+        <ul>
+            <li>
+                <div class="col-lg-auto mb-5"><p class="lead">
+                    일반적으로 House Price는 위치, 주택 크기, 외내부마감재, 대지면적에 영향을 받을 것임.
+                </p></div>
+            </li>
+            <li>
+                <div class="col-lg-auto mb-5"><p class="lead">
+                    각 항목이 House Price에 주는 영향을 알아보자!
+                </p></div>
+            </li>
+        </ul>
+        
+        <div class="col-md-8">
+            <h2 class="fs-3 text-secondary mb-0">House Price</h2>       
+            <iframe src="{% static 'main/price_histogram.html' %}" width="1250" height="700" frameborder="0" framespacing="0" marginheight="0" marginwidth="0" scrolling="no" vspace="0"></iframe></p>
+        </div>
+        <div class="col-md-8">
+            <h2 class="fs-3 text-secondary mb-0">1. 대지 면적</h2>
+            <iframe src="{% static 'main/lotarea_scatter.html' %}" width="1250" height="700" frameborder="0" framespacing="0" marginheight="0" marginwidth="0" scrolling="no" vspace="0"></iframe></p>
+            <ul>
+                <li>
+                    <div class="col-lg-auto mb-5"><p class="lead">
+                        대지면적을 나타내는 column인 "LotArea"를 기준으로 그래프를 그림
+                    </p></div>
+                </li>
+                <li>
+                    <div class="col-lg-auto mb-5"><p class="lead">
+                        데이터가 대부분 20000이하의 값을 갖아 전체적으로 판단이 안됨
+                    </p></div>
+                </li>
+            </ul>   
+            <iframe src="{% static 'main/lotarea_scatter_less_then_20000.html' %}" width="1250" height="700" frameborder="0" framespacing="0" marginheight="0" marginwidth="0" scrolling="no" vspace="0"></iframe></p>
+            <ul>
+                <li>
+                    <div class="col-lg-auto mb-5"><p class="lead">
+                        대지면적이 20000보다 작은 데이터를 기준으로 확인
+                    </p></div>
+                </li>
+                <li>
+                    <div class="col-lg-auto mb-5"><p class="lead">
+                        대지면적이 주택 가격에 어느 정도는 영향을 미치고 있지만 큰 영향은 안 줄 것으로 생각됨.
+                    </p></div>
+                </li>
+            </ul>  
+        </div>
+        <div class="col-md-8">
+            <h2 class="fs-3 text-secondary mb-0">2. 주택 크기</h2>       
+            <iframe src="{% static 'main/GrLivArea_scatter.html' %}" width="1250" height="700" frameborder="0" framespacing="0" marginheight="0" marginwidth="0" scrolling="no" vspace="0"></iframe></p>
+            <ul>
+                <li>
+                    <div class="col-lg-auto mb-5"><p class="lead">
+                        주택 크기를 나타내는 column인 "GrLivArea"를 기준으로 그래프를 그림
+                    </p></div>
+                </li>
+                <li>
+                    <div class="col-lg-auto mb-5"><p class="lead">
+                        주택 크기가 대지면적보다 주택 가격에 더 많은 영향을 줄 것으로 생각됨.
+                    </p></div>
+                </li>
+            </ul>
+            <iframe src="{% static 'main/total_scatter.html' %}" width="1250" height="700" frameborder="0" framespacing="0" marginheight="0" marginwidth="0" scrolling="no" vspace="0"></iframe></p>
+            <ul>
+                <li>
+                    <div class="col-lg-auto mb-5"><p class="lead">
+                        위 대지면적과 주택 크기에 대한 분석을 비교했을때 전체적인 범위보다 그 안에 있는 주택과 같은 아이템의 크기가 더 큰 영향을 줄 것이라 생각해볼 수 있음.
+                    </p></div>
+                </li>
+                <li>
+                    <div class="col-lg-auto mb-5"><p class="lead">
+                        대지 안에 있는 주택, 지하, 차고, WoodDeck, 현관, 수영장의 넓이의 합을 "totalArea"라는 column으로 추가함.
+                    </p></div>
+                </li>
+                <li>
+                    <div class="col-lg-auto mb-5"><p class="lead">
+                        위 결과를 보면, "totalArea"가 주택 가격에 매우 큰 영향을 줄 것이라 생각됨.
+                    </p></div>
+                </li>
+            </ul>
+        </div>
+        <div class="col-md-8">
+            <h2 class="fs-3 text-secondary mb-0">3. 외내부마감재 품질</h2>       
+            <iframe src="{% static 'main/overallqual_box.html' %}" width="1250" height="700" frameborder="0" framespacing="0" marginheight="0" marginwidth="0" scrolling="no" vspace="0"></iframe></p>
+            <ul>
+                <li>
+                    <div class="col-lg-auto mb-5"><p class="lead">
+                        전체적인 마감재 품질을 나타내는 column인 "OverallQual"를 기준으로 그래프를 그림
+                    </p></div>
+                </li>
+                <li>
+                    <div class="col-lg-auto mb-5"><p class="lead">
+                        전체적인 마감재 품질이 주택 가격에 영향을 줄 것이라 생각됨.
+                    </p></div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+{% endblock %}
